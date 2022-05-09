@@ -7,7 +7,7 @@ import PersonajesContext from '../context/Personajes/PersonajeContext';
 
 const Personaje = props => {
 
-    const { setPersonajesSeleccionados } = useContext(PersonajesContext);
+    const { personajesSeleccionados, setPersonajesSeleccionados } = useContext(PersonajesContext);
 
     /* Destructuring the props object. */
     const { name, status, species, image, title, id } = props
@@ -29,8 +29,20 @@ const Personaje = props => {
         title.includes('2') ? setPersonajesSeleccionados((personaje) => ({ ...personaje, personaje2: id })) : setPersonajesSeleccionados((personaje) => ({ ...personaje, personaje1: id }))
     }
 
+    const isSelected = () => {
+        if (title.includes('1')) {
+            if (personajesSeleccionados.personaje1 === id) {
+                return 'darkgrey'
+            }
+        } else {
+            if (personajesSeleccionados.personaje2 === id) {
+                return 'darkgrey'
+            }
+        }
+    }
+
     return (
-        <Card sx={{ width: '30%'}} onClick={() => handleSelect()}>
+        <Card sx={{ width: '30%', backgroundColor: isSelected() }} onClick={() => handleSelect()}>
             <CardActionArea sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardMedia component="img" sx={{ width: '100%' }} image={image} alt={name} />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}  >
