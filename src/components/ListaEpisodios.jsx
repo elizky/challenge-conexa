@@ -1,11 +1,9 @@
 import { Box } from '@mui/system'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import Episodios from './Episodios'
+import Episodio from './Episodio'
 
 const ListaEpisodios = ({ title, personajes }) => {
-  console.log('personajes --------------------', personajes)
-
 
   const [episodios, setEpisodios] = useState([])
 
@@ -26,8 +24,7 @@ const ListaEpisodios = ({ title, personajes }) => {
   const filterEpisodios = (personajes) => {
     const episodiosPersonaje1 = personajes[0].episode;
     const episodiosPersonaje2 = personajes[1].episode;
-    const episodiosFilter = episodiosPersonaje1.filter(episodio => episodio == episodiosPersonaje2);
-    console.log('episodiosFilter', episodiosFilter)
+    const episodiosFilter = episodiosPersonaje1.filter(episodio => episodiosPersonaje2.includes(episodio));
     setEpisodios(episodiosFilter);
   }
 
@@ -37,11 +34,11 @@ const ListaEpisodios = ({ title, personajes }) => {
   }, [personajes])
 
   return (
-    <Box component='section' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', width: '50%' }}>
+    <Box component='section' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', width: '30%' }}>
       <h3>{title}</h3>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
         {episodios.length > 0
-          ? episodios.map((episodio, i) => <Episodios key={i} episodio={episodio} />)
+          ? episodios.map((episodio, i) => <Episodio key={i} episodio={episodio} />)
           : <p> NO HAY EPISODIOS</p>
         }
       </Box>

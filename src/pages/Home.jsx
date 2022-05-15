@@ -20,10 +20,17 @@ const Home = () => {
                 <ListaPersonajes title={'Personajes #1'} />
                 <ListaPersonajes title={'Personajes #2'} />
             </Box>
-            <Box component='main' sx={{ display: 'flex', width: '90%' }} m={'auto'}>
-                {personaje1 !== [''] ? <ListaEpisodios title={'Episodios Personaje #1'} personajes={personaje1} /> : null}
-                {personajes ? <ListaEpisodios title={'Episodios en comun'} personajes={personajes} /> : null}
-                {personaje2 ? <ListaEpisodios title={'Episodio Personaje #2'} personajes={personaje2} /> : null}
+            <Box component='main' sx={{ display: 'flex', justifyContent:'space-between', width: '90%' }} m={'auto'}>
+                {personajesSeleccionados
+                    ?
+                    <>
+                        <ListaEpisodios title={'Episodios Personaje #1'} personajes={personaje1} />
+                        <ListaEpisodios title={'Episodios en comun'} personajes={personajes} />
+                        <ListaEpisodios title={'Episodio Personaje #2'} personajes={personaje2} />
+
+                    </>
+                    : null
+                }
             </Box>
 
         </div>
