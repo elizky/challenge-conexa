@@ -9,8 +9,12 @@ const ListaEpisodios = ({ title, personajes }) => {
 
   const urlPersonajes = 'https://rickandmortyapi.com/api/character'
 
+
+
   /**
-   * Toma los datos de la API y dependiendo del array de la data ejecuta dos metodos.
+   * Get the data from the API
+   * If the length of the data is not equal to 2, then set the episodios state to the episode property of
+   * the data, otherwise filter the episodios.
    */
   const getEpisodiosList = async () => {
     const url = `${urlPersonajes}/${personajes}`;
@@ -30,14 +34,17 @@ const ListaEpisodios = ({ title, personajes }) => {
 
 
   useEffect(() => {
-    getEpisodiosList();
+    if (personajes[0] !== 0) {
+
+      getEpisodiosList();
+    }
   }, [personajes])
 
   return (
     <Box component='section' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', width: '30%' }}>
       <h3>{title}</h3>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
-        {episodios.length > 0
+        {episodios
           ? episodios.map((episodio, i) => <Episodio key={i} episodio={episodio} />)
           : <p> NO HAY EPISODIOS</p>
         }

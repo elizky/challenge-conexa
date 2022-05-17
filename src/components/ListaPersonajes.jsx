@@ -31,8 +31,7 @@ const ListaPersonajes = ({ title }) => {
         setPage(value);
     }
 
-    /* A React hook that is used to perform side effects in function components. It is a function that
-    takes a function as an argument and returns a clean-up function. */
+    
     useEffect(() => {
         getPersonajes();
     }, [page])

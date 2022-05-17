@@ -8,6 +8,9 @@ const Episodios = ({ episodio }) => {
 
   const { air_date, episode, name } = episodioInfo
 
+  /**
+   * When the component mounts, get the data from the API and set the state with the data.
+   */
   const getEpisodio = async () => {
     const data = await axios(episodio).then(data => data.data);
     setEpisodio(data)

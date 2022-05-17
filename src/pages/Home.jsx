@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import React, { useContext } from 'react'
 import ListaEpisodios from '../components/ListaEpisodios'
 import ListaPersonajes from '../components/ListaPersonajes'
@@ -7,6 +7,7 @@ import Header from '../layouts/Header'
 
 const Home = () => {
 
+    /* Destructuring the personajesSeleccionados from the PersonajesContext. */
     const { personajesSeleccionados } = useContext(PersonajesContext);
 
     const personaje1 = [personajesSeleccionados.personaje1]
@@ -20,7 +21,7 @@ const Home = () => {
                 <ListaPersonajes title={'Personajes #1'} />
                 <ListaPersonajes title={'Personajes #2'} />
             </Box>
-            <Box component='main' sx={{ display: 'flex', justifyContent:'space-between', width: '90%' }} m={'auto'}>
+            <Box component='main' sx={{ display: 'flex', justifyContent: 'space-between', width: '90%' }} m={'auto'}>
                 {personajesSeleccionados
                     ?
                     <>
